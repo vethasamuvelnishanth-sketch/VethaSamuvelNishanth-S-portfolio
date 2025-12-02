@@ -12,13 +12,15 @@
 
   <style>
     :root {
-      --bg: #f5f5f8;
+      --bg: #f3f4f6;
       --bg-alt: #ffffff;
-      --text: #111827;
+      --text: #0f172a;
       --muted: #6b7280;
       --accent: #2563eb;
-      --accent-soft: rgba(37, 99, 235, 0.06);
+      --accent2: #ec4899;
+      --accent3: #f97316;
       --border: #e5e7eb;
+      --chip-bg: rgba(37, 99, 235, 0.06);
     }
 
     * {
@@ -33,7 +35,7 @@
 
     body {
       font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      background: var(--bg);
+      background: radial-gradient(circle at top left, #e0f2fe 0, #fef3c7 35%, #f9fafb 70%);
       color: var(--text);
       line-height: 1.7;
       font-size: 15.5px;
@@ -41,9 +43,9 @@
 
     .container {
       width: 100%;
-      max-width: 980px;
+      max-width: 1020px;
       margin: 0 auto;
-      padding: 0 1.3rem;
+      padding: 0 1.5rem;
     }
 
     /* HEADER */
@@ -52,8 +54,8 @@
       position: sticky;
       top: 0;
       z-index: 20;
-      background: rgba(245, 245, 248, 0.95);
-      backdrop-filter: blur(10px);
+      background: rgba(249, 250, 251, 0.95);
+      backdrop-filter: blur(12px);
       border-bottom: 1px solid rgba(229, 231, 235, 0.9);
     }
 
@@ -65,8 +67,8 @@
     }
 
     .logo {
-      font-weight: 600;
-      letter-spacing: 0.12em;
+      font-weight: 700;
+      letter-spacing: 0.16em;
       font-size: 0.9rem;
       text-transform: uppercase;
       color: #4b5563;
@@ -81,7 +83,7 @@
     .nav a {
       color: #4b5563;
       text-decoration: none;
-      padding-bottom: 0.2rem;
+      padding-bottom: 0.22rem;
       position: relative;
     }
 
@@ -92,7 +94,7 @@
       bottom: 0;
       width: 0%;
       height: 2px;
-      background: var(--accent);
+      background: linear-gradient(90deg, var(--accent), var(--accent2));
       transition: width 0.2s ease-out;
     }
 
@@ -107,79 +109,104 @@
     /* SECTIONS */
 
     .section {
-      padding: 3rem 0;
-      border-bottom: 1px solid var(--border);
-      background: var(--bg-alt);
+      padding: 3.2rem 0;
+      background: transparent;
     }
 
-    #contact.section {
-      border-bottom: none;
+    .section-solid {
+      background: var(--bg-alt);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
     }
 
     h1, h2, h3 {
       font-weight: 600;
       letter-spacing: -0.02em;
-      color: #111827;
+      color: #0f172a;
     }
 
     h1 {
-      font-size: clamp(2.1rem, 3vw, 2.5rem);
-      margin-bottom: 0.6rem;
+      font-size: clamp(2.2rem, 3vw, 2.6rem);
+      margin-bottom: 0.7rem;
     }
 
     h2 {
-      font-size: 1.5rem;
-      margin-bottom: 0.3rem;
+      font-size: 1.55rem;
+      margin-bottom: 0.35rem;
     }
 
     h3 {
       font-size: 1.02rem;
-      margin-bottom: 0.1rem;
+      margin-bottom: 0.15rem;
     }
 
     .section-intro {
       color: var(--muted);
-      max-width: 580px;
+      max-width: 600px;
       margin-bottom: 1.4rem;
-      font-size: 0.95rem;
+      font-size: 0.96rem;
     }
 
     /* HERO */
 
     .hero {
       padding-top: 3.5rem;
-      background: linear-gradient(to bottom, #ffffff, #f5f5f8);
+    }
+
+    .hero-inner {
+      position: relative;
+      overflow: hidden;
+      border-radius: 24px;
+      background: linear-gradient(135deg, #eff6ff 0, #fdf2ff 40%, #fffbeb 100%);
+      padding: 2.4rem 2.1rem;
+      border: 1px solid rgba(209, 213, 219, 0.8);
+    }
+
+    .hero-gradient-orbit {
+      position: absolute;
+      inset: -40%;
+      background:
+        radial-gradient(circle at 0% 0%, rgba(59, 130, 246, 0.10), transparent 60%),
+        radial-gradient(circle at 100% 0%, rgba(236, 72, 153, 0.08), transparent 55%),
+        radial-gradient(circle at 0% 100%, rgba(249, 115, 22, 0.08), transparent 55%);
+      opacity: 0.9;
+      pointer-events: none;
     }
 
     .hero-grid {
+      position: relative;
       display: grid;
-      grid-template-columns: minmax(0, 3fr) minmax(0, 2fr);
-      gap: 2rem;
+      grid-template-columns: minmax(0, 3fr) minmax(0, 2.2fr);
+      gap: 2.2rem;
       align-items: flex-start;
+      z-index: 1;
     }
 
     .eyebrow {
-      font-size: 0.75rem;
-      letter-spacing: 0.22em;
+      font-size: 0.78rem;
+      letter-spacing: 0.24em;
       text-transform: uppercase;
-      color: var(--muted);
-      margin-bottom: 0.75rem;
+      color: #6b7280;
+      margin-bottom: 0.7rem;
     }
 
     .accent {
-      color: var(--accent);
+      background: linear-gradient(90deg, var(--accent), var(--accent2));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
     }
 
     .hero-text {
       color: #4b5563;
-      margin-bottom: 1.3rem;
+      margin-bottom: 1.4rem;
       font-size: 1rem;
     }
 
     .hero-actions {
       display: flex;
       flex-wrap: wrap;
-      gap: 0.7rem;
+      gap: 0.8rem;
       margin-top: 0.3rem;
     }
 
@@ -187,60 +214,61 @@
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      padding: 0.6rem 1.3rem;
+      padding: 0.65rem 1.4rem;
       border-radius: 999px;
       font-size: 0.9rem;
       text-decoration: none;
       border: 1px solid transparent;
       cursor: pointer;
       white-space: nowrap;
-      transition: all 0.18s ease-out;
+      transition: all 0.2s ease-out;
     }
 
     .btn.primary {
-      background: var(--accent);
+      background: linear-gradient(90deg, var(--accent), var(--accent2));
       color: #f9fafb;
-      box-shadow: 0 10px 25px rgba(37, 99, 235, 0.35);
+      box-shadow: 0 12px 26px rgba(37, 99, 235, 0.4);
     }
 
     .btn.primary:hover {
-      background: #1d4ed8;
       transform: translateY(-1px);
-      box-shadow: 0 14px 35px rgba(37, 99, 235, 0.4);
+      box-shadow: 0 16px 40px rgba(37, 99, 235, 0.45);
     }
 
     .btn.ghost {
-      background: #ffffff;
+      background: rgba(255, 255, 255, 0.7);
       color: #111827;
-      border-color: var(--border);
+      border-color: rgba(209, 213, 219, 0.8);
     }
 
     .btn.ghost:hover {
       border-color: var(--accent);
       color: var(--accent);
+      background: #ffffff;
     }
 
     .hero-card {
-      border-radius: 16px;
-      padding: 1.1rem 1.1rem;
-      border: 1px solid var(--border);
-      background: #ffffff;
-      box-shadow: 0 14px 28px rgba(15, 23, 42, 0.08);
+      border-radius: 18px;
+      padding: 1.15rem 1.2rem;
+      background: rgba(255, 255, 255, 0.9);
+      border: 1px solid rgba(209, 213, 219, 0.9);
+      box-shadow: 0 16px 38px rgba(148, 163, 184, 0.35);
       font-size: 0.92rem;
     }
 
     .hero-card h3 {
       font-size: 0.98rem;
       margin-bottom: 0.45rem;
+      color: #111827;
     }
 
     .hero-card ul {
       list-style: none;
-      color: var(--muted);
+      color: #4b5563;
     }
 
     .hero-card li {
-      margin-bottom: 0.3rem;
+      margin-bottom: 0.28rem;
     }
 
     /* SKILLS & TOOLS */
@@ -248,7 +276,7 @@
     .two-column {
       display: grid;
       grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
-      gap: 2.2rem;
+      gap: 2.4rem;
       align-items: flex-start;
     }
 
@@ -257,30 +285,30 @@
       display: flex;
       flex-wrap: wrap;
       gap: 0.55rem;
-      margin-top: 0.6rem;
+      margin-top: 0.7rem;
     }
 
     .pill-list li {
-      font-size: 0.88rem;
-      padding: 0.42rem 0.9rem;
+      font-size: 0.9rem;
+      padding: 0.45rem 0.9rem;
       border-radius: 999px;
-      background: var(--accent-soft);
+      background: var(--chip-bg);
       border: 1px solid var(--border);
-      color: #1f2937;
+      color: #111827;
     }
 
     /* PROJECTS */
 
     .projects-list {
-      margin-top: 1.5rem;
+      margin-top: 1.6rem;
       display: flex;
       flex-direction: column;
-      gap: 1.8rem;
+      gap: 1.9rem;
     }
 
     .project {
       padding-bottom: 1.4rem;
-      border-bottom: 1px solid var(--border);
+      border-bottom: 1px dashed var(--border);
     }
 
     .project:last-child {
@@ -288,7 +316,7 @@
     }
 
     .project h3 {
-      margin-bottom: 0.1rem;
+      margin-bottom: 0.15rem;
       font-size: 1.08rem;
     }
 
@@ -299,9 +327,9 @@
     }
 
     .project-text p {
-      font-size: 0.95rem;
+      font-size: 0.96rem;
       color: #4b5563;
-      margin-bottom: 0.2rem;
+      margin-bottom: 0.22rem;
     }
 
     .project-text strong {
@@ -309,25 +337,63 @@
       font-weight: 500;
     }
 
+    .project:hover h3 {
+      color: var(--accent);
+      transition: color 0.15s ease-out;
+    }
+
     /* SIMPLE GRID (Awards & Certs) */
 
     .simple-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
-      gap: 1.5rem;
-      margin-top: 1.2rem;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1.6rem;
+      margin-top: 1.3rem;
     }
 
     .simple-item {
       font-size: 0.95rem;
-      border-left: 3px solid var(--accent-soft);
+      position: relative;
       padding-left: 0.9rem;
+    }
+
+    .simple-item::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0.4rem;
+      width: 4px;
+      height: 18px;
+      border-radius: 999px;
+      background: linear-gradient(180deg, var(--accent), var(--accent3));
     }
 
     .simple-item p {
       color: #4b5563;
       font-size: 0.9rem;
       margin-top: 0.2rem;
+    }
+
+    /* CTA PHRASE */
+
+    .cta-section {
+      text-align: center;
+      padding: 3.2rem 0 1.2rem;
+    }
+
+    .cta-phrase {
+      font-size: 1.1rem;
+      font-weight: 500;
+      max-width: 640px;
+      margin: 0 auto;
+      color: #111827;
+    }
+
+    .cta-phrase span {
+      background: linear-gradient(90deg, var(--accent), var(--accent2), var(--accent3));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
     }
 
     /* CONTACT & FOOTER */
@@ -344,14 +410,15 @@
     .contact-grid {
       display: grid;
       grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-      gap: 1.8rem;
-      margin-top: 0.9rem;
+      gap: 1.9rem;
+      margin-top: 1rem;
     }
 
     .site-footer {
       padding: 1.5rem 0 1.7rem;
       border-top: 1px solid var(--border);
       background: #f9fafb;
+      margin-top: 0.5rem;
     }
 
     .footer-inner {
@@ -360,12 +427,12 @@
       color: var(--muted);
     }
 
-    /* ANIMATION (on scroll) */
+    /* ANIMATION: fade-up on scroll */
 
     .fade-up {
       opacity: 0;
-      transform: translateY(12px);
-      transition: opacity 0.55s ease-out, transform 0.55s ease-out;
+      transform: translateY(16px);
+      transition: opacity 0.6s ease-out, transform 0.6s ease-out;
     }
 
     .fade-up.visible {
@@ -383,19 +450,23 @@
       }
 
       .nav {
-        display: none; /* simple: hide nav on mobile */
+        display: none; /* keep it simple on mobile */
       }
 
       .section {
-        padding: 2.6rem 0;
+        padding: 2.7rem 0;
       }
 
       .hero {
         padding-top: 3rem;
       }
 
+      .hero-inner {
+        padding: 2rem 1.6rem;
+      }
+
       .hero-card {
-        margin-top: 0.6rem;
+        margin-top: 0.7rem;
       }
     }
 
@@ -426,34 +497,39 @@
   <main>
     <!-- ABOUT / HERO -->
     <section id="about" class="section hero fade-up">
-      <div class="container hero-grid">
-        <div>
-          <p class="eyebrow">Market Research · Analytics · User Behaviour</p>
-          <h1>Hi, I’m <span class="accent">Vetha Samuvel Nishanth</span>.</h1>
-          <p class="hero-text">
-            I enjoy decoding why people choose one product over another, even when the “better” option is available.
-            Engineering taught me to break systems into logic, and my MBA journey is helping me understand how those
-            systems exist inside markets, users, and decisions. I’m building a career in
-            <strong>analytics-driven market research</strong>, where data becomes insight and insight becomes direction.
-          </p>
-          <div class="hero-actions">
-            <a href="#projects" class="btn primary">View projects</a>
-            <a href="#contact" class="btn ghost">Get in touch</a>
+      <div class="container">
+        <div class="hero-inner">
+          <div class="hero-gradient-orbit"></div>
+          <div class="hero-grid">
+            <div>
+              <p class="eyebrow">Market Research · Analytics · User Behaviour</p>
+              <h1>Hi, I’m <span class="accent">Vetha Samuvel Nishanth</span>.</h1>
+              <p class="hero-text">
+                I enjoy decoding why people choose one product over another, even when the “better” option is available.
+                Engineering taught me to break systems into logic, and my MBA journey is helping me understand how those
+                systems exist inside markets, users, and decisions. I’m building a career in
+                <strong>analytics-driven market research</strong>, where data becomes insight and insight becomes direction.
+              </p>
+              <div class="hero-actions">
+                <a href="#projects" class="btn primary">View projects</a>
+                <a href="#contact" class="btn ghost">Get in touch</a>
+              </div>
+            </div>
+            <div class="hero-card">
+              <h3>Quick snapshot</h3>
+              <ul>
+                <li>MBA Candidate · Amrita School of Business</li>
+                <li>B.E. Electrical &amp; Electronics Engineering</li>
+                <li>Interested in SaaS, user behaviour &amp; adoption</li>
+              </ul>
+            </div>
           </div>
-        </div>
-        <div class="hero-card">
-          <h3>Quick snapshot</h3>
-          <ul>
-            <li>MBA Candidate · Amrita School of Business</li>
-            <li>B.E. Electrical &amp; Electronics Engineering</li>
-            <li>Interested in SaaS, user behaviour &amp; adoption</li>
-          </ul>
         </div>
       </div>
     </section>
 
     <!-- SKILLS & TOOLS -->
-    <section id="skills" class="section fade-up">
+    <section id="skills" class="section section-solid fade-up">
       <div class="container two-column">
         <div>
           <h2>Skills</h2>
@@ -544,7 +620,7 @@
     </section>
 
     <!-- AWARDS & LEADERSHIP -->
-    <section id="awards" class="section fade-up">
+    <section id="awards" class="section section-solid fade-up">
       <div class="container">
         <h2>Awards &amp; Leadership</h2>
         <p class="section-intro">
@@ -595,8 +671,17 @@
       </div>
     </section>
 
+    <!-- CTA PHRASE -->
+    <section class="cta-section fade-up">
+      <div class="container">
+        <p class="cta-phrase">
+          I don’t just look at data for answers — I use it to ask <span>better questions about people, choices, and markets.</span>
+        </p>
+      </div>
+    </section>
+
     <!-- RESUME -->
-    <section id="resume" class="section fade-up">
+    <section id="resume" class="section section-solid fade-up">
       <div class="container">
         <h2>Resume</h2>
         <p class="section-intro">
@@ -656,7 +741,7 @@
           }
         });
       },
-      { threshold: 0.15 }
+      { threshold: 0.18 }
     );
     faders.forEach(el => observer.observe(el));
   </script>
