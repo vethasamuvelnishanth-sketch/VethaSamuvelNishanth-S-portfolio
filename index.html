@@ -1,821 +1,746 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <title>Vetha Samuvel Nishanth | Market Research Portfolio</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-
-  <style>
-    /* Color Palette: Professional, Clean, with Zoho-inspired accents */
-    :root {
-      --bg: #f9fafb; /* Very light gray/off-white */
-      --bg-alt: #ffffff; /* Pure white for section contrast */
-      --text: #0f172a; /* Dark text */
-      --muted: #6b7280; /* Muted gray for secondary text */
-      --accent-primary: #3b82f6; /* A clean blue */
-      --accent-secondary: #8b5cf6; /* A soft purple */
-      --accent-tertiary: #10b981; /* A gentle green */
-      --border: #e5e7eb; /* Light border gray */
-      --chip-bg: rgba(59, 130, 246, 0.08); /* Light accent background for pills */
-    }
-
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
-
-    body {
-      font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      line-height: 1.65;
-      font-size: 16px;
-    }
-
-    .container {
-      width: 100%;
-      max-width: 1080px;
-      margin: 0 auto;
-      padding: 0 1.25rem;
-    }
-
-    /* HEADER */
-
-    .site-header {
-      position: sticky;
-      top: 0;
-      z-index: 20;
-      background: rgba(255, 255, 255, 0.98);
-      backdrop-filter: blur(10px);
-      border-bottom: 1px solid var(--border);
-      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.03);
-    }
-
-    .header-inner {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 0.9rem 0;
-    }
-
-    .logo {
-      font-weight: 700;
-      letter-spacing: 0.12em;
-      font-size: 1rem;
-      text-transform: uppercase;
-      color: var(--text);
-    }
-
-    .nav {
-      display: flex;
-      gap: 1.5rem;
-      font-size: 0.9rem;
-      font-weight: 500;
-    }
-
-    .nav a {
-      color: var(--muted);
-      text-decoration: none;
-      padding-bottom: 0.2rem;
-      position: relative;
-      transition: color 0.15s ease-out;
-    }
-
-    .nav a::after {
-      content: "";
-      position: absolute;
-      left: 0;
-      bottom: 0;
-      width: 0%;
-      height: 2px;
-      background: linear-gradient(90deg, var(--accent-primary), var(--accent-secondary));
-      transition: width 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
-    }
-
-    .nav a:hover, .nav a.active {
-      color: var(--text);
-    }
-
-    .nav a:hover::after, .nav a.active::after {
-      width: 100%;
-    }
-
-    /* SECTIONS */
-
-    .section {
-      padding: 4rem 0;
-      background: transparent;
-    }
-
-    .section-solid {
-      background: var(--bg-alt);
-      border-top: 1px solid var(--border);
-      border-bottom: 1px solid var(--border);
-    }
-
-    h1, h2, h3 {
-      font-weight: 700;
-      letter-spacing: -0.02em;
-      color: var(--text);
-    }
-
-    h1 {
-      font-size: clamp(2.4rem, 4vw, 3.2rem);
-      margin-bottom: 0.9rem;
-    }
-
-    h2 {
-      font-size: 1.75rem;
-      margin-bottom: 0.75rem;
-    }
-
-    h3 {
-      font-size: 1.15rem;
-      margin-bottom: 0.25rem;
-    }
-
-    .section-intro {
-      color: var(--muted);
-      max-width: 720px;
-      margin-bottom: 2rem;
-      font-size: 1.05rem;
-    }
-
-    /* HERO */
-
-    .hero {
-      padding-top: 5rem;
-      padding-bottom: 4rem;
-    }
-
-    .hero-inner {
-      position: relative;
-      overflow: hidden;
-      border-radius: 28px;
-      background: var(--bg-alt);
-      padding: 2.8rem;
-      border: 1px solid var(--border);
-      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.05);
-    }
-
-    .hero-gradient-orbit {
-      position: absolute;
-      inset: -40%;
-      background:
-        radial-gradient(circle at 100% 100%, rgba(59, 130, 246, 0.1), transparent 60%),
-        radial-gradient(circle at 0% 0%, rgba(139, 92, 246, 0.1), transparent 55%),
-        radial-gradient(circle at 0% 100%, rgba(16, 185, 129, 0.1), transparent 55%);
-      opacity: 0.8;
-      pointer-events: none;
-    }
-
-    .hero-grid {
-      position: relative;
-      display: grid;
-      grid-template-columns: minmax(0, 2fr) minmax(0, 1fr);
-      gap: 3rem;
-      align-items: flex-start;
-      z-index: 1;
-    }
-
-    .eyebrow {
-      font-size: 0.82rem;
-      letter-spacing: 0.26em;
-      text-transform: uppercase;
-      color: var(--accent-tertiary);
-      margin-bottom: 0.7rem;
-      font-weight: 600;
-    }
-
-    .accent {
-      background: linear-gradient(90deg, var(--accent-primary), var(--accent-secondary));
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-    }
-
-    .hero-text {
-      color: #4b5563;
-      margin-bottom: 2rem;
-      font-size: 1.1rem;
-    }
-
-    .hero-text strong {
-      color: var(--text);
-      font-weight: 600;
-    }
-
-    .hero-actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 1rem;
-      margin-top: 0.3rem;
-    }
-
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      padding: 0.75rem 1.7rem;
-      border-radius: 999px;
-      font-size: 0.95rem;
-      font-weight: 600;
-      text-decoration: none;
-      border: 1px solid transparent;
-      cursor: pointer;
-      white-space: nowrap;
-      transition: all 0.25s cubic-bezier(0.165, 0.84, 0.44, 1);
-    }
-
-    .btn.primary {
-      background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
-      color: #ffffff;
-      box-shadow: 0 12px 30px rgba(59, 130, 246, 0.3);
-    }
-
-    .btn.primary:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 18px 45px rgba(59, 130, 246, 0.4);
-    }
-
-    .btn.ghost {
-      background: transparent;
-      color: var(--muted);
-      border-color: var(--border);
-    }
-
-    .btn.ghost:hover {
-      border-color: var(--accent-primary);
-      color: var(--accent-primary);
-      background: rgba(59, 130, 246, 0.05);
-      transform: translateY(-1px);
-    }
-
-    .hero-card {
-      border-radius: 18px;
-      padding: 1.4rem;
-      background: #f0f9ff;
-      border: 1px solid #dbeafe;
-      box-shadow: 0 8px 18px rgba(100, 116, 139, 0.1);
-      font-size: 0.95rem;
-    }
-
-    .hero-card h3 {
-      font-size: 1.05rem;
-      margin-bottom: 0.6rem;
-      color: var(--accent-primary);
-      font-weight: 600;
-    }
-
-    .hero-card ul {
-      list-style: none;
-      color: #4b5563;
-    }
-
-    .hero-card li {
-      margin-bottom: 0.4rem;
-      padding-left: 1.2rem;
-      position: relative;
-    }
-    
-    .hero-card li::before {
-      content: "◇"; /* Diamond/Bullet point */
-      color: var(--accent-tertiary);
-      position: absolute;
-      left: 0;
-      font-size: 0.7rem;
-      top: 0.2rem;
-      line-height: 1;
-    }
-
-
-    /* SKILLS & TOOLS */
-
-    .two-column {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 3.5rem;
-      align-items: flex-start;
-    }
-
-    .pill-list {
-      list-style: none;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.7rem;
-      margin-top: 1rem;
-    }
-
-    .pill-list li {
-      font-size: 0.9rem;
-      padding: 0.5rem 1rem;
-      border-radius: 999px;
-      background: var(--chip-bg);
-      border: 1px solid var(--accent-primary);
-      color: var(--text);
-      font-weight: 500;
-      transition: all 0.15s ease-out;
-    }
-    
-    .pill-list li:hover {
-      background: rgba(59, 130, 246, 0.15);
-    }
-
-    /* PROJECTS */
-
-    .projects-list {
-      margin-top: 2rem;
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
-      gap: 2rem;
-    }
-
-    .project {
-      padding: 1.5rem;
-      background: var(--bg-alt);
-      border-radius: 12px;
-      border: 1px solid var(--border);
-      transition: all 0.2s ease-out;
-    }
-    
-    .project:hover {
-      border-color: var(--accent-primary);
-      box-shadow: 0 8px 20px rgba(59, 130, 246, 0.1);
-      transform: translateY(-3px);
-    }
-
-    .project h3 {
-      margin-bottom: 0.2rem;
-      font-size: 1.15rem;
-      color: var(--accent-secondary);
-      transition: color 0.15s ease-out;
-    }
-
-    .project-tag {
-      font-size: 0.85rem;
-      color: var(--muted);
-      margin-bottom: 1rem;
-      display: block;
-    }
-
-    .project-text p {
-      font-size: 0.95rem;
-      color: #4b5563;
-      margin-bottom: 0.7rem;
-      padding-left: 1.2rem;
-      position: relative;
-    }
-    
-    .project-text p::before {
-      content: "";
-      position: absolute;
-      left: 0;
-      top: 0.55rem;
-      width: 6px;
-      height: 6px;
-      border-radius: 50%;
-      background: var(--accent-tertiary);
-    }
-
-    .project-text strong {
-      color: var(--text);
-      font-weight: 600;
-    }
-    
-    .project-text p:first-child::before { background: var(--accent-primary); }
-    .project-text p:nth-child(2)::before { background: var(--accent-secondary); }
-    .project-text p:nth-child(3)::before { background: var(--accent-tertiary); }
-
-
-    /* SIMPLE GRID (Awards & Certs) */
-
-    .simple-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-      gap: 2rem;
-      margin-top: 1.6rem;
-    }
-
-    .simple-item {
-      font-size: 0.95rem;
-      position: relative;
-      padding-left: 1.2rem;
-      border-left: 3px solid var(--accent-tertiary);
-    }
-    
-    .simple-item:hover {
-      border-left-color: var(--accent-primary);
-    }
-
-    .simple-item h3 {
-      font-size: 1.05rem;
-      color: var(--text);
-      font-weight: 600;
-    }
-
-    .simple-item p {
-      color: #4b5563;
-      font-size: 0.92rem;
-      margin-top: 0.3rem;
-    }
-
-    /* CTA PHRASE */
-
-    .cta-section {
-      text-align: center;
-      padding: 5rem 0 2rem;
-    }
-
-    .cta-phrase {
-      font-size: 1.4rem;
-      font-weight: 600;
-      max-width: 800px;
-      margin: 0 auto;
-      color: var(--text);
-      line-height: 1.4;
-    }
-
-    .cta-phrase span {
-      background: linear-gradient(90deg, var(--accent-primary), var(--accent-secondary), var(--accent-tertiary));
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-    }
-
-    /* CONTACT & FOOTER */
-
-    #contact a {
-      color: var(--accent-primary);
-      text-decoration: none;
-      transition: color 0.15s ease-out;
-    }
-
-    #contact a:hover {
-      color: var(--accent-secondary);
-      text-decoration: underline;
-    }
-
-    .contact-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 2.5rem;
-      margin-top: 1.5rem;
-    }
-    
-    .contact-grid h3 {
-      font-size: 1.1rem;
-      color: var(--muted);
-      margin-bottom: 0.8rem;
-    }
-    
-    .contact-grid p {
-      color: #4b5563;
-      margin-bottom: 0.4rem;
-    }
-
-    .site-footer {
-      padding: 2rem 0;
-      border-top: 1px solid var(--border);
-      background: var(--bg-alt);
-      margin-top: 2rem;
-    }
-
-    .footer-inner {
-      text-align: center;
-      font-size: 0.85rem;
-      color: var(--muted);
-    }
-
-    /* ANIMATION: fade-up on scroll */
-
-    .fade-up {
-      opacity: 0;
-      transform: translateY(24px);
-      transition: opacity 0.8s ease-out, transform 0.8s ease-out;
-    }
-
-    .fade-up.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    /* RESPONSIVE */
-
-    @media (max-width: 1024px) {
-      .hero-grid {
-        grid-template-columns: minmax(0, 1fr);
-        gap: 2rem;
-      }
-
-      .hero-inner {
-        padding: 2.5rem 2rem;
-      }
-
-      .section {
-        padding: 3.5rem 0;
-      }
-    }
-
-    @media (max-width: 768px) {
-      .nav {
-        display: none; /* Keep the header simple on mobile */
-      }
-      
-      .hero {
-        padding-top: 4rem;
-      }
-      
-      .projects-list {
-        grid-template-columns: 1fr;
-      }
-      
-      .cta-phrase {
-        font-size: 1.25rem;
-      }
-      
-      .hero-actions {
-        flex-direction: column;
-        align-items: stretch;
-      }
-    }
-  </style>
+  <meta charset="UTF-8" />
+  <title>Vetha Samuvel Nishanth | Market Research Portfolio</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Google Font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg: #f3f4f6;
+      --bg-alt: #ffffff;
+      --text: #0f172a;
+      --muted: #6b7280;
+      --accent: #2563eb;
+      --accent2: #ec4899;
+      --accent3: #f97316;
+      --border: #e5e7eb;
+      --chip-bg: rgba(37, 99, 235, 0.06);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: radial-gradient(circle at top left, #e0f2fe 0, #fef3c7 32%, #f9fafb 70%);
+      color: var(--text);
+      line-height: 1.7;
+      font-size: 16px;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 0 1.3rem;
+    }
+
+    /* HEADER */
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      background: rgba(249, 250, 251, 0.96);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(229, 231, 235, 0.9);
+    }
+
+    .header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.9rem 0;
+    }
+
+    .logo {
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      font-size: 0.95rem;
+      text-transform: uppercase;
+      color: #4b5563;
+    }
+
+    .nav {
+      display: flex;
+      gap: 1rem;
+      font-size: 0.9rem;
+    }
+
+    .nav a {
+      color: #4b5563;
+      text-decoration: none;
+      padding-bottom: 0.22rem;
+      position: relative;
+    }
+
+    .nav a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 0%;
+      height: 2px;
+      background: linear-gradient(90deg, var(--accent), var(--accent2));
+      transition: width 0.2s ease-out;
+    }
+
+    .nav a:hover {
+      color: var(--accent);
+    }
+
+    .nav a:hover::after {
+      width: 100%;
+    }
+
+    /* SECTIONS */
+
+    .section {
+      padding: 3rem 0;
+      background: transparent;
+      border-bottom: 1px solid var(--border);
+    }
+
+    #contact.section {
+      border-bottom: none;
+    }
+
+    h1, h2, h3 {
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      color: #0f172a;
+    }
+
+    h1 {
+      font-size: clamp(2.2rem, 3vw, 2.6rem);
+      margin-bottom: 0.7rem;
+      line-height: 1.2;
+    }
+
+    h2 {
+      font-size: 1.5rem;
+      margin-bottom: 0.35rem;
+    }
+
+    h3 {
+      font-size: 1.02rem;
+      margin-bottom: 0.15rem;
+    }
+
+    .section-intro {
+      color: var(--muted);
+      max-width: 600px;
+      margin-bottom: 1.4rem;
+      font-size: 0.96rem;
+    }
+
+    /* HERO */
+
+    .hero {
+      padding-top: 3.3rem;
+    }
+
+    .hero-inner {
+      padding: 2.4rem 2.1rem;
+      border-radius: 22px;
+      border: 1px solid rgba(209, 213, 219, 0.9);
+      background: linear-gradient(135deg, #eff6ff 0, #fdf2ff 42%, #fffbeb 100%);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-inner::before {
+      content: "";
+      position: absolute;
+      inset: -40%;
+      background:
+        radial-gradient(circle at 0% 0%, rgba(59, 130, 246, 0.20), transparent 60%),
+        radial-gradient(circle at 100% 0%, rgba(236, 72, 153, 0.16), transparent 55%),
+        radial-gradient(circle at 0% 100%, rgba(249, 115, 22, 0.16), transparent 55%);
+      opacity: 0.8;
+      pointer-events: none;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+    }
+
+    .eyebrow {
+      font-size: 0.78rem;
+      letter-spacing: 0.24em;
+      text-transform: uppercase;
+      color: #6b7280;
+      margin-bottom: 0.75rem;
+    }
+
+    .accent {
+      background: linear-gradient(90deg, var(--accent), var(--accent2));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .hero-text {
+      color: #4b5563;
+      margin-bottom: 1.5rem;
+      font-size: 1rem;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.8rem;
+      margin-top: 0.2rem;
+      align-items: center;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.7rem 1.5rem;
+      border-radius: 999px;
+      font-size: 0.9rem;
+      text-decoration: none;
+      border: 1px solid transparent;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: all 0.2s ease-out;
+    }
+
+    .btn.primary {
+      background: linear-gradient(90deg, var(--accent), var(--accent2));
+      color: #f9fafb;
+      box-shadow: 0 12px 26px rgba(37, 99, 235, 0.45);
+    }
+
+    .btn.primary:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 16px 40px rgba(37, 99, 235, 0.5);
+    }
+
+    .btn.ghost {
+      background: rgba(255, 255, 255, 0.9);
+      color: #111827;
+      border-color: rgba(209, 213, 219, 0.9);
+    }
+
+    .btn.ghost:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    .hero-meta {
+      margin-top: 1.8rem;
+      padding-top: 1rem;
+      border-top: 1px solid rgba(209, 213, 219, 0.8);
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.8rem;
+      font-size: 0.9rem;
+      color: #4b5563;
+    }
+
+    .hero-meta div span {
+      display: block;
+      font-size: 0.78rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: #9ca3af;
+      margin-bottom: 0.1rem;
+    }
+
+    /* SKILLS & TOOLS */
+
+    .two-column {
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+      gap: 2.4rem;
+      align-items: flex-start;
+    }
+
+    .pill-list {
+      list-style: none;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+      margin-top: 0.7rem;
+    }
+
+    .pill-list li {
+      font-size: 0.9rem;
+      padding: 0.46rem 0.95rem;
+      border-radius: 999px;
+      background: var(--chip-bg);
+      border: 1px solid var(--border);
+      color: #111827;
+    }
+
+    /* PROJECTS */
+
+    .projects-list {
+      margin-top: 1.4rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.9rem;
+    }
+
+    .project {
+      padding-bottom: 1.5rem;
+      border-bottom: 1px dashed var(--border);
+    }
+
+    .project:last-child {
+      border-bottom: none;
+    }
+
+    .project h3 {
+      margin-bottom: 0.18rem;
+      font-size: 1.08rem;
+    }
+
+    .project-tag {
+      font-size: 0.82rem;
+      color: var(--muted);
+      margin-bottom: 0.55rem;
+    }
+
+    .project-text p {
+      font-size: 0.95rem;
+      color: #4b5563;
+      margin-bottom: 0.22rem;
+    }
+
+    .project-text strong {
+      color: #111827;
+      font-weight: 500;
+    }
+
+    .project:hover h3 {
+      color: var(--accent);
+      transition: color 0.16s ease-out;
+    }
+
+    /* SIMPLE GRID (Awards & Certs) */
+
+    .simple-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1.6rem;
+      margin-top: 1.3rem;
+    }
+
+    .simple-item {
+      font-size: 0.95rem;
+      position: relative;
+      padding-left: 0.9rem;
+    }
+
+    .simple-item::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0.4rem;
+      width: 4px;
+      height: 18px;
+      border-radius: 999px;
+      background: linear-gradient(180deg, var(--accent), var(--accent3));
+    }
+
+    .simple-item p {
+      color: #4b5563;
+      font-size: 0.9rem;
+      margin-top: 0.2rem;
+    }
+
+    /* CTA PHRASE */
+
+    .cta-section {
+      text-align: center;
+      padding: 3rem 0 1rem;
+    }
+
+    .cta-phrase {
+      font-size: 1.1rem;
+      font-weight: 500;
+      max-width: 640px;
+      margin: 0 auto;
+      color: #111827;
+    }
+
+    .cta-phrase span {
+      background: linear-gradient(90deg, var(--accent), var(--accent2), var(--accent3));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    /* CONTACT & FOOTER */
+
+    #contact a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    #contact a:hover {
+      text-decoration: underline;
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+      gap: 1.9rem;
+      margin-top: 1rem;
+    }
+
+    .site-footer {
+      padding: 1.5rem 0 1.7rem;
+      border-top: 1px solid var(--border);
+      background: #f9fafb;
+      margin-top: 0.5rem;
+    }
+
+    .footer-inner {
+      text-align: center;
+      font-size: 0.82rem;
+      color: var(--muted);
+    }
+
+    /* ANIMATION: fade-up on scroll */
+
+    .fade-up {
+      opacity: 0;
+      transform: translateY(18px);
+      transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    }
+
+    .fade-up.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* RESPONSIVE */
+
+    @media (max-width: 860px) {
+      .nav {
+        display: none; /* keep it simple on mobile */
+      }
+
+      .section {
+        padding: 2.7rem 0;
+      }
+
+      .hero {
+        padding-top: 2.8rem;
+      }
+
+      .hero-inner {
+        padding: 2rem 1.7rem;
+      }
+
+      .hero-meta {
+        flex-direction: column;
+        gap: 0.9rem;
+      }
+
+      .two-column,
+      .contact-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+
+    @media (max-width: 480px) {
+      .hero-actions {
+        flex-direction: column;
+        align-items: stretch;
+      }
+    }
+  </style>
 </head>
 <body>
-  <header class="site-header">
-    <div class="container header-inner">
-      <div class="logo">VETHA S.N.</div>
-      <nav class="nav">
-        <a href="#about" class="active">About</a>
-        <a href="#skills">Skills</a>
-        <a href="#projects">Projects</a>
-        <a href="#awards">Awards</a>
-        <a href="#certifications">Certs</a>
-        <a href="#contact">Contact</a>
-      </nav>
-    </div>
-  </header>
+  <header class="site-header">
+    <div class="container header-inner">
+      <div class="logo">VETHA</div>
+      <nav class="nav">
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#projects">Projects</a>
+        <a href="#awards">Awards</a>
+        <a href="#certifications">Certs</a>
+        <a href="#resume">Resume</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
 
-  <main>
-        <section id="about" class="section hero fade-up">
-      <div class="container">
-        <div class="hero-inner">
-          <div class="hero-gradient-orbit"></div>
-          <div class="hero-grid">
-            <div>
-              <p class="eyebrow">Market Research · Analytics · User Behaviour</p>
-              <h1>Hi, I’m <span class="accent">Vetha Samuvel Nishanth</span>.</h1>
-              <p class="hero-text">
-                I enjoy decoding why people choose one product over another, even when the “better” option is available.
-                Engineering taught me to break systems into logic, and my MBA journey is helping me understand how those
-                systems exist inside markets, users, and decisions. I’m building a career in
-                <strong>analytics-driven market research</strong>, where data becomes insight and insight becomes direction.
-              </p>
-              <div class="hero-actions">
-                <a href="#projects" class="btn primary">View Projects</a>
-                                <a href="https://drive.google.com/file/d/12WYl-a2sVXiFn-m2aq7IJ-ZfHHrVH1Wu/view?usp=drivesdk" target="_blank" class="btn ghost">Full Resume (PDF)</a>
-              </div>
-            </div>
-            <div class="hero-card">
-              <h3>Quick Snapshot</h3>
-              <ul>
-                <li>MBA Candidate · Amrita School of Business</li>
-                <li>B.E. Electrical &amp; Electronics Engineering</li>
-                <li>Interested in SaaS, user behaviour &amp; adoption</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-    
-        <section id="skills" class="section section-solid fade-up">
-      <div class="container two-column">
-        <div>
-          <h2>Skills 🧠</h2>
-          <p class="section-intro">
-            A mix of research thinking, analytical structure, and communication.
-          </p>
-          <ul class="pill-list">
-            <li>Market Research &amp; User Insight Generation</li>
-            <li>Competitor &amp; Trend Analysis</li>
-            <li>Analytical Thinking &amp; Problem Solving</li>
-            <li>Data Interpretation &amp; Decision Making</li>
-            <li>Stakeholder Communication &amp; Presentation</li>
-          </ul>
-        </div>
-        <div>
-          <h2>Tools 🛠️</h2>
-          <p class="section-intro">
-            Comfortable working with data, from raw tables to simple dashboards.
-          </p>
-          <ul class="pill-list">
-            <li>Microsoft Excel (charts, pivots, analysis)</li>
-            <li>MySQL (basic querying &amp; filtering)</li>
-            <li>Python (automation &amp; simple data manipulation)</li>
-            <li>Power BI (basic dashboards &amp; visualization)</li>
-          </ul>
-        </div>
-      </div>
-    </section>
-    
-        <section id="projects" class="section fade-up">
-      <div class="container">
-        <h2>Market Research Projects 🔬</h2>
-        <p class="section-intro">
-          Studies focused on how people think, decide, and adopt — not just what the numbers say.
-        </p>
+  <main>
+    <!-- ABOUT / HERO -->
+    <section id="about" class="section hero fade-up">
+      <div class="container">
+        <div class="hero-inner">
+          <div class="hero-content">
+            <p class="eyebrow">Market Research · Analytics · User Behaviour</p>
+            <h1>Hi, I’m <span class="accent">Vetha Samuvel Nishanth</span>.</h1>
+            <p class="hero-text">
+              I enjoy decoding why people choose one product over another, even when the “better” option is available.
+              Engineering taught me to break systems into logic, and my MBA journey is helping me understand how those
+              systems exist inside markets, users, and decisions. I’m building a career in
+              <strong>analytics-driven market research</strong>, where data becomes insight and insight becomes direction.
+            </p>
+            <div class="hero-actions">
+              <a href="#projects" class="btn primary">View projects</a>
+              <a href="#contact" class="btn ghost">Get in touch</a>
+            </div>
 
-        <div class="projects-list">
-                    <div class="project fade-up">
-            <h3>ESG Performance Growth of Indian Companies</h3>
-            <span class="project-tag">Investor perception &amp; signaling</span>
-            <div class="project-text">
-              <p><strong>Problem:</strong> Investors claim ESG matters, but which aspect actually influences confidence?</p>
-              <p><strong>Observed:</strong> Transparency and consistency in reporting triggered stronger investor response than high ESG scores.</p>
-              <p><strong>Analysis:</strong> Investors preferred reliability and credibility over “best metrics.”</p>
-              <p><strong>Insight:</strong> ESG communication builds trust; companies should prioritize clarity and consistency, not only numbers.</p>
-            </div>
-          </div>
+            <div class="hero-meta">
+              <div>
+                <span>Current</span>
+                MBA Candidate, Amrita School of Business
+              </div>
+              <div>
+                <span>Background</span>
+                B.E. Electrical &amp; Electronics Engineering
+              </div>
+              <div>
+                <span>Focus</span>
+                Market research, user behaviour, SaaS adoption
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
 
-                    <div class="project fade-up">
-            <h3>Solar Tracker — Adoption vs Efficiency</h3>
-            <span class="project-tag">Technology adoption &amp; ROI</span>
-            <div class="project-text">
-              <p><strong>Problem:</strong> A 30% efficiency increase didn’t guarantee real-world adoption.</p>
-              <p><strong>Observed:</strong> Users cared more about cost, maintenance, and payback period than technical innovation.</p>
-              <p><strong>Analysis:</strong> Decision drivers were practicality and financial security, not performance.</p>
-              <p><strong>Insight:</strong> For adoption, technology must be positioned around <strong>ROI, reliability, and simplicity</strong>.</p>
-            </div>
-          </div>
+    <!-- SKILLS & TOOLS -->
+    <section id="skills" class="section fade-up">
+      <div class="container two-column">
+        <div>
+          <h2>Skills</h2>
+          <p class="section-intro">
+            A mix of research thinking, analytical structure, and communication.
+          </p>
+          <ul class="pill-list">
+            <li>Market Research &amp; User Insight Generation</li>
+            <li>Competitor &amp; Trend Analysis</li>
+            <li>Analytical Thinking &amp; Problem Solving</li>
+            <li>Data Interpretation &amp; Decision Making</li>
+            <li>Stakeholder Communication &amp; Presentation</li>
+          </ul>
+        </div>
+        <div>
+          <h2>Tools</h2>
+          <p class="section-intro">
+            Comfortable working with data, from raw tables to simple dashboards.
+          </p>
+          <ul class="pill-list">
+            <li>Microsoft Excel (charts, pivots, analysis)</li>
+            <li>MySQL (basic querying &amp; filtering)</li>
+            <li>Python (automation &amp; simple data manipulation)</li>
+            <li>Power BI (basic dashboards &amp; visualization)</li>
+          </ul>
+        </div>
+      </div>
+    </section>
 
-                    <div class="project fade-up">
-            <h3>Flip Debate — Audience Engagement &amp; Topic Segmentation</h3>
-            <span class="project-tag">Engagement behaviour</span>
-            <div class="project-text">
-              <p><strong>Problem:</strong> Traditional event topics attracted limited participation.</p>
-              <p><strong>Observed:</strong> Future-focused themes (career, work, money, uncertainty) drew significantly more attention than technical topics.</p>
-              <p><strong>Analysis:</strong> Engagement followed <strong>personal relevance and perceived benefit</strong>, not topic difficulty.</p>
-              <p><strong>Insight:</strong> To reach wider audiences, design communication around motivation and outcomes, not complexity.</p>
-            </div>
-          </div>
+    <!-- PROJECTS -->
+    <section id="projects" class="section fade-up">
+      <div class="container">
+        <h2>Market Research Projects</h2>
+        <p class="section-intro">
+          Studies focused on how people think, decide, and adopt — not just what the numbers say.
+        </p>
 
-                    <div class="project fade-up">
-            <h3>Zoho Survey vs Typeform — Completion &amp; User Friction</h3>
-            <span class="project-tag">Tool comparison &amp; completion rate</span>
-            <div class="project-text">
-              <p><strong>Problem:</strong> Both tools collect responses, but users don’t complete surveys at the same rate.</p>
-              <p><strong>Observed:</strong> Typeform felt visually appealing but slower, while Zoho Survey’s direct flow led to quicker completions.</p>
-              <p><strong>Analysis:</strong> Extra interactions increased friction; simple navigation reduced cognitive effort.</p>
-              <p><strong>Insight:</strong> Higher completion comes from <strong>clarity and speed</strong>, not aesthetics.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
+        <div class="projects-list">
+          <!-- Project 1 -->
+          <div class="project">
+            <h3>ESG Performance Growth of Indian Companies</h3>
+            <p class="project-tag">Investor perception &amp; signaling</p>
+            <div class="project-text">
+              <p><strong>Problem:</strong> Investors claim ESG matters, but which aspect actually influences confidence?</p>
+              <p><strong>Observed:</strong> Transparency and consistency in reporting triggered stronger investor response than high ESG scores.</p>
+              <p><strong>Analysis:</strong> Investors preferred reliability and credibility over “best metrics.”</p>
+              <p><strong>Insight:</strong> ESG communication builds trust; companies should prioritize clarity and consistency, not only numbers.</p>
+            </div>
+          </div>
 
-        <section id="awards" class="section section-solid fade-up">
-      <div class="container">
-        <h2>Awards &amp; Leadership 🏆</h2>
-        <p class="section-intro">
-          Moments that reflect analytical thinking, initiative, and exposure to how ideas are evaluated.
-        </p>
-        <div class="simple-grid">
-          <div class="simple-item fade-up">
-            <h3>National Quiz — 2nd Prize</h3>
-            <p>Recognized for quick analytical reasoning and broad domain awareness in a competitive setting.</p>
-          </div>
-          <div class="simple-item fade-up">
-            <h3>GENNEXT Symposium Coordination</h3>
-            <p>Led cross-functional coordination and speaker engagement, enabling smooth interaction for 250+ participants.</p>
-          </div>
-          <div class="simple-item fade-up">
-            <h3>Flip Debate Initiator — Yi Club</h3>
-            <p>Designed a future-centric debate format that increased participation by aligning topics with relevance and motivation.</p>
-          </div>
-          <div class="simple-item fade-up">
-            <h3>Volunteer — MSME Idea Hackathon 5.0</h3>
-            <p>Interfaced with founders and expert evaluators, gaining exposure to how ideas are judged for feasibility, market fit, and problem–solution clarity.</p>
-          </div>
-        </div>
-      </div>
-    </section>
+          <!-- Project 2 -->
+          <div class="project">
+            <h3>Solar Tracker — Adoption vs Efficiency</h3>
+            <p class="project-tag">Technology adoption &amp; ROI</p>
+            <div class="project-text">
+              <p><strong>Problem:</strong> A 30% efficiency increase didn’t guarantee real-world adoption.</p>
+              <p><strong>Observed:</strong> Users cared more about cost, maintenance, and payback period than technical innovation.</p>
+              <p><strong>Analysis:</strong> Decision drivers were practicality and financial security, not performance.</p>
+              <p><strong>Insight:</strong> For adoption, technology must be positioned around <strong>ROI, reliability, and simplicity</strong>.</p>
+            </div>
+          </div>
 
-        <section id="certifications" class="section fade-up">
-      <div class="container">
-        <h2>Certifications 📜</h2>
-        <p class="section-intro">
-          Structured learning to support analytical and research work.
-        </p>
-        <div class="simple-grid">
-          <div class="simple-item fade-up">
-            <h3>Python Basics — CSC Institute</h3>
-            <p>Practical foundation in scripting and basic data manipulation.</p>
-          </div>
-          <div class="simple-item fade-up">
-            <h3>MySQL for Database Management — Great Learning</h3>
-            <p>Ability to structure datasets and query information for analysis.</p>
-          </div>
-          <div class="simple-item fade-up">
-            <h3>Microsoft Excel Certification — Microsoft</h3>
-            <p>Developing skills in data cleaning, tabular analysis, and visual reporting.</p>
-          </div>
-        </div>
-      </div>
-    </section>
+          <!-- Project 3 -->
+          <div class="project">
+            <h3>Flip Debate — Audience Engagement &amp; Topic Segmentation</h3>
+            <p class="project-tag">Engagement behaviour</p>
+            <div class="project-text">
+              <p><strong>Problem:</strong> Traditional event topics attracted limited participation.</p>
+              <p><strong>Observed:</strong> Future-focused themes (career, work, money, uncertainty) drew significantly more attention than technical topics.</p>
+              <p><strong>Analysis:</strong> Engagement followed <strong>personal relevance and perceived benefit</strong>, not topic difficulty.</p>
+              <p><strong>Insight:</strong> To reach wider audiences, design communication around motivation and outcomes, not complexity.</p>
+            </div>
+          </div>
 
-        <section class="cta-section fade-up">
-      <div class="container">
-        <p class="cta-phrase">
-          I don’t just look at data for answers — I use it to ask <span>better questions about people, choices, and markets.</span>
-        </p>
-      </div>
-    </section>
+          <!-- Project 4 -->
+          <div class="project">
+            <h3>Zoho Survey vs Typeform — Completion &amp; User Friction</h3>
+            <p class="project-tag">Tool comparison &amp; completion rate</p>
+            <div class="project-text">
+              <p><strong>Problem:</strong> Both tools collect responses, but users don’t complete surveys at the same rate.</p>
+              <p><strong>Observed:</strong> Typeform felt visually appealing but slower, while Zoho Survey’s direct flow led to quicker completions.</p>
+              <p><strong>Analysis:</strong> Extra interactions increased friction; simple navigation reduced cognitive effort.</p>
+              <p><strong>Insight:</strong> Higher completion comes from <strong>clarity and speed</strong>, not aesthetics.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
 
-        <section id="contact" class="section section-solid fade-up">
-      <div class="container">
-        <h2>Connect with me 👋</h2>
-        <p class="section-intro">
-          Open to conversations around market research, product thinking, and internships.
-        </p>
-        <div class="contact-grid">
-          <div>
-            <h3>Reach me directly</h3>
-            <p><strong>Phone:</strong> <a href="tel:+919042243740">+91 90422 43740</a></p>
-            <p><strong>Email:</strong> <a href="mailto:samuvelstanley2003@gmail.com">samuvelstanley2003@gmail.com</a></p>
-          </div>
-          <div>
-            <h3>Online presence</h3>
-            <p>
-              <a href="https://www.linkedin.com/in/vetha-samuvel-nishanth-s-601920265" target="_blank">
-                LinkedIn Profile
-              </a>
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
-  </main>
+    <!-- AWARDS & LEADERSHIP -->
+    <section id="awards" class="section fade-up">
+      <div class="container">
+        <h2>Awards &amp; Leadership</h2>
+        <p class="section-intro">
+          Moments that reflect analytical thinking, initiative, and exposure to how ideas are evaluated.
+        </p>
+        <div class="simple-grid">
+          <div class="simple-item">
+            <h3>National Quiz — 2nd Prize</h3>
+            <p>Recognized for quick analytical reasoning and broad domain awareness in a competitive setting.</p>
+          </div>
+          <div class="simple-item">
+            <h3>GENNEXT Symposium Coordination</h3>
+            <p>Led cross-functional coordination and speaker engagement, enabling smooth interaction for 250+ participants.</p>
+          </div>
+          <div class="simple-item">
+            <h3>Flip Debate Initiator — Yi Club</h3>
+            <p>Designed a future-centric debate format that increased participation by aligning topics with relevance and motivation.</p>
+          </div>
+          <div class="simple-item">
+            <h3>Volunteer — MSME Idea Hackathon 5.0</h3>
+            <p>Interfaced with founders and expert evaluators, gaining exposure to how ideas are judged for feasibility, market fit, and problem–solution clarity.</p>
+          </div>
+        </div>
+      </div>
+    </section>
 
-  <footer class="site-footer">
-    <div class="container footer-inner">
-      <p>© <span id="year"></span> Vetha Samuvel Nishanth — Built as a reflection of my interest in research, behaviour, and decision-making.</p>
-    </div>
-  </footer>
+    <!-- CERTIFICATIONS -->
+    <section id="certifications" class="section fade-up">
+      <div class="container">
+        <h2>Certifications</h2>
+        <p class="section-intro">
+          Structured learning to support analytical and research work.
+        </p>
+        <div class="simple-grid">
+          <div class="simple-item">
+            <h3>Python Basics — CSC Institute</h3>
+            <p>Practical foundation in scripting and basic data manipulation.</p>
+          </div>
+          <div class="simple-item">
+            <h3>MySQL for Database Management — Great Learning</h3>
+            <p>Ability to structure datasets and query information for analysis.</p>
+          </div>
+          <div class="simple-item">
+            <h3>Microsoft Excel Certification — Microsoft</h3>
+            <p>Developing skills in data cleaning, tabular analysis, and visual reporting.</p>
+          </div>
+        </div>
+      </div>
+    </section>
 
-  <script>
-    // Dynamically set the current year in the footer
-    document.getElementById("year").textContent = new Date().getFullYear();
+    <!-- CTA PHRASE -->
+    <section class="cta-section fade-up">
+      <div class="container">
+        <p class="cta-phrase">
+          I don’t just look at data for answers — I use it to ask <span>better questions about people, choices, and markets.</span>
+        </p>
+      </div>
+    </section>
 
-    // Scroll animation: show .fade-up when in view
-    const faders = document.querySelectorAll('.fade-up');
-    const observer = new IntersectionObserver(
-      entries => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('visible');
-            observer.unobserve(entry.target); // Stop observing once visible
-          }
-        });
-      },
-      { threshold: 0.18 } // Trigger when 18% of the element is visible
-    );
-    faders.forEach(el => observer.observe(el));
-    
-    // Optional: Navigation active state on scroll
-    const sections = document.querySelectorAll('main section');
-    const navLinks = document.querySelectorAll('.nav a');
+    <!-- RESUME -->
+    <section id="resume" class="section fade-up">
+      <div class="container">
+        <h2>Resume</h2>
+        <p class="section-intro">
+          For a detailed view of my academic background and experience.
+        </p>
+        <a href="https://drive.google.com/file/d/12WYl-a2sVXiFn-m2aq7IJ-ZfHHrVH1Wu/view?usp=drivesdk"
+           target="_blank" class="btn primary">
+          View Resume (PDF)
+        </a>
+      </div>
+    </section>
 
-    const navObserver = new IntersectionObserver(
-      entries => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            // Remove 'active' class from all links
-            navLinks.forEach(link => link.classList.remove('active'));
+    <!-- CONTACT -->
+    <section id="contact" class="section fade-up">
+      <div class="container">
+        <h2>Contact</h2>
+        <p class="section-intro">
+          Open to conversations around market research, product thinking, and internships.
+        </p>
+        <div class="contact-grid">
+          <div>
+            <h3>Reach me at</h3>
+            <p><strong>Phone:</strong> <a href="tel:+919042243740">+91 90422 43740</a></p>
+            <p><strong>Email:</strong> <a href="mailto:samuvelstanley2003@gmail.com">samuvelstanley2003@gmail.com</a></p>
+          </div>
+          <div>
+            <h3>LinkedIn</h3>
+            <p>
+              <a href="https://www.linkedin.com/in/vetha-samuvel-nishanth-s-601920265" target="_blank">
+                View my LinkedIn profile
+              </a>
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
 
-            // Add 'active' class to the corresponding link
-            const id = entry.target.getAttribute('id');
-            if (id) {
-              const activeLink = document.querySelector(`.nav a[href="#${id}"]`);
-              if (activeLink) {
-                activeLink.classList.add('active');
-              }
-            }
-          }
-        });
-      },
-      { rootMargin: '-30% 0px -60% 0px' } // Adjust for better accuracy
-    );
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p>© <span id="year"></span> Vetha Samuvel Nishanth — Online portfolio built to reflect curiosity, clarity, and research-driven thinking.</p>
+    </div>
+  </footer>
 
-    sections.forEach(section => navObserver.observe(section));
-  </script>
+  <script>
+    // Footer year
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    // Scroll animation: show .fade-up when in view
+    const faders = document.querySelectorAll('.fade-up');
+    const observer = new IntersectionObserver(
+      entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.18 }
+    );
+    faders.forEach(el => observer.observe(el));
+  </script>
 </body>
 </html>
